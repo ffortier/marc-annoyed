@@ -1,0 +1,32 @@
+[package]
+name = "marc-annoyed"
+version = "0.1.0"
+edition = "2021"
+authors = ["Francis Fortier <francis.fortier@gmail.com>"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+anyhow = "1.0"
+thiserror = "1.0"
+js-sys = "0.3"
+console_error_panic_hook = "0.1"
+log = "0.4"
+console_log = "0.2"
+peg = "0.8"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "HtmlCanvasElement",
+    "HtmlImageElement",
+    "CanvasRenderingContext2d",
+    "Window",
+    "Document",
+    "KeyboardEvent",
+    "MouseEvent",
+    "FontFace",
+]

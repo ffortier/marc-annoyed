@@ -1,0 +1,13 @@
+{
+  "author": "Francis Fortier <francis.fortier@gmail.com>",
+  "workspaces": [
+    "pkg"
+  ],
+  "devDependencies": {
+    "vite": "^3.0.9",
+    "wasm-pack": "^0.10.3"
+  },
+  "scripts": {
+    "build": "wasm-pack build --target web"
+  }
+}
