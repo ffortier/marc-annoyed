@@ -5,7 +5,7 @@ use thiserror::Error;
 
 use super::{
     object_parser::{document, Line},
-    Triangle, Vertex,
+    Triangle, Vector,
 };
 
 #[derive(Debug)]
@@ -23,12 +23,7 @@ impl FromStr for Object3d {
         for line in document(s)? {
             match line {
                 Line::Vertex(x, y, z, w) => {
-                    vertices.push(Vertex {
-                        x,
-                        y,
-                        z,
-                        w: w.unwrap_or(1.0),
-                    });
+                    vertices.push(Vector::new(x, y, z, w));
                 }
                 Line::Face(vertex_indices) => {
                     if vertex_indices.len() != 3 {
@@ -45,11 +40,7 @@ impl FromStr for Object3d {
                         .get(vertex_indices[2].0 - 1)
                         .ok_or(ParseError::UnknownIndices)?;
 
-                    mesh.push(Triangle {
-                        a: *a,
-                        b: *b,
-                        c: *c,
-                    });
+                    mesh.push(Triangle::new(*a, *b, *c));
                 }
                 _ => {}
             }

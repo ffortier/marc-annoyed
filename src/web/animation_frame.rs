@@ -28,12 +28,12 @@ impl AnimationFrame {
 
             let closure: Closure<dyn FnMut()> = Closure::new(move || {
                 match frame() {
-                    Continue => {
+                    FrameResult::Continue => {
                         let id = request_animation_frame(callback.borrow().as_ref().unwrap());
 
                         rid.borrow_mut().replace(id);
                     }
-                    Stop => {
+                    FrameResult::Stop => {
                         rid.borrow_mut().take();
                     }
                 };
